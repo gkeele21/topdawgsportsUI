@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import AdminSeasons from './views/admin/Seasons.vue'
+import AdminUsers from './views/admin/Users.vue'
 import About from './views/About.vue'
 import AdminDashboard from './views/admin/Dashboard.vue'
 
@@ -31,6 +32,10 @@ export default new Router({
             name: 'seasons',
             component: AdminSeasons
         },
-
+        {
+            path: '/admin/users',
+            name: 'users',
+            component: AdminUsers
+        }
     ]
 })
