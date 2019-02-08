@@ -43,7 +43,7 @@ export default new Router({
             path: '/admin/seasons/:seasonid',
             component: AdminSeasonInfo,
             props: true,
-        },
+        }
 
     ]
 })
