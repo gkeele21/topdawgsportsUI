@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <the-header />
+        <TheAdminHeader />
         <UsersTable msg="My Users"/>
     </div>
 </template>
@@ -8,13 +8,13 @@
 <script>
     // @ is an alias to /src
     import UsersTable from '@/components/admin/UsersTable.vue'
-    import TheHeader from '@/components/admin/TheHeader.vue'
+    import TheAdminHeader from '@/components/admin/TheAdminHeader.vue'
 
     export default {
         name: 'users',
         components: {
             UsersTable,
-            TheHeader
+            TheAdminHeader
         }
     }
 </script>
