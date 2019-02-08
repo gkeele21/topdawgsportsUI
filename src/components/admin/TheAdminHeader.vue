@@ -2,6 +2,7 @@
     <div class="navHeaderAdmin">
         <span id="nav">
             <router-link to="/admin">Home</router-link> |
+            <router-link to="/admin/users">Users</router-link> |
             <router-link to="/admin/seasons">Seasons</router-link>
         </span>
         <img alt="Vue logo" src="../../assets/logo.png" />
