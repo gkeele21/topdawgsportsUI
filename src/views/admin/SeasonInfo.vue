@@ -1,19 +1,19 @@
 <template>
     <div class="home">
         <TheAdminHeader/>
-        <SeasonsTable msg="My Seasons"/>
+        <SeasonInfoTable />
     </div>
 </template>
 
 <script>
     // @ is an alias to /src
-    import SeasonsTable from '@/components/admin/SeasonsTable.vue'
+    import SeasonInfoTable from '@/components/admin/SeasonInfoTable.vue'
     import TheAdminHeader from '@/components/admin/TheAdminHeader.vue'
 
     export default {
-        name: 'seasons',
+        name: 'seasoninfo',
         components: {
-            SeasonsTable,
+            SeasonInfoTable,
             TheAdminHeader
         }
     }

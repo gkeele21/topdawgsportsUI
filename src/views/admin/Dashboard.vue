@@ -1,18 +1,18 @@
 <template>
     <div class="home">
-        <the-header></the-header>
-        Testing
+        <TheAdminHeader></TheAdminHeader>
+        Welcome to TopdawgSports admin
     </div>
 </template>
 
 <script>
     // @ is an alias to /src
-    import TheHeader from '@/components/admin/TheHeader.vue'
+    import TheAdminHeader from '@/components/admin/TheAdminHeader.vue'
 
     export default {
         name: 'admindashboard',
         components: {
-            TheHeader
+            TheAdminHeader
         }
     }
 </script>

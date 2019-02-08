@@ -38,7 +38,7 @@
                 Seasons List
             </template>
             <template slot="Name" slot-scope="data">
-                <a href="http://www.nfl.com">{{data.value}}</a>
+                <b-link :to="{ name: 'seasoninfo', params: {seasonid: data.item.SeasonID}}">{{data.value}}</b-link>
             </template>
         </b-table>
 
