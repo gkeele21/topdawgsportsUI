@@ -2,6 +2,7 @@
     <div class="home">
         <TheAdminHeader/>
         <SeasonInfoTable />
+        <hr />
     </div>
 </template>
 

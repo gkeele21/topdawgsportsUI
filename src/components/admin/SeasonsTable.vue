@@ -83,7 +83,7 @@
             }
         },
         mounted () {
-            axios.get('http://localhost:8888/seasons', {
+            axios.get('/api/seasons', {
                 params: {
                     orderBy: 'season_id',
                     orderByAsc: 'desc',

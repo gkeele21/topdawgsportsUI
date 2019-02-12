@@ -52,7 +52,7 @@
             }
         },
         mounted () {
-            axios.get('http://localhost:8888/users', {
+            axios.get('/api/users', {
                 params: {
                     orderBy: 'user_id',
                     orderByAsc: 'desc'
