@@ -67,8 +67,13 @@
                                       label-cols="4"
                                       label-class="font-weight-bold pt-0"
                                       label-text-align="right"
-                                      label="Active:">
-                            <b-form-checkbox id="seasonStatus" v-model="season.Status" value="active" unchecked-value="inactive"></b-form-checkbox>
+                                      label="Status:">
+                            <b-form-radio-group
+                                    id="seasonStatus"
+                                    name="seasonStatus"
+                                    v-model="season.Status"
+                                    :options="statusOptions">
+                            </b-form-radio-group>
                         </b-form-group>
                     </b-col>
                 </b-form-row>
@@ -163,20 +168,25 @@
                     SportLevelID: '',
                 },
                 sportlevels: [],
+                statusOptions: [
+                    { text: 'Pending', value: 'pending' },
+                    { text: 'Active', value: 'active' },
+                    { text: 'Final', value: 'final' }
+                ],
                 successCount: 0,
                 errorCount: 0
             }
         },
         mounted () {
             axios
-                    .get('http://localhost:8888/seasons/' + this.$route.params.seasonid + '/')
+                    .get('/api/seasons/' + this.$route.params.seasonid + '/')
                     .then((response) => {
                         this.season = response.data
                         console.log("SeasonInfo: " + JSON.stringify(response.data))
                     })
 
             axios
-                    .get('http://localhost:8888/sportlevels')
+                    .get('/api/sportlevels')
                     .then(response => {
                         var numResults = response.data.length;
                         console.log("Num Sport Levels : " + numResults);
@@ -195,17 +205,22 @@
         },
         methods: {
             onSubmit(event) {
-                event.preventDefault();
-                alert(JSON.stringify(this.season));
-                axios.post('http://localhost:8888/seasons/' + this.season.SeasonID, {
-
+              event.preventDefault();
+                axios.post('/api/seasons/' + this.season.SeasonID,
+                  { Name: this.season.Name,
+                  StartingYear: this.season.StartingYear,
+                  SportLevelId: this.season.SportLevelID,
+                  Status: this.season.Status})
+                  .then(response => {
+                    console.log("Done updating season.");
+                    console.log(response);
+                    this.successCount = 5;
+                    this.errorCount = 0;
+                  }).catch((e) => {
+                    console.error(e);
+                    this.successCount = 0;
+                    this.errorCount = 5;
                 })
-
-
-
-                this.successCount = 5;
-                this.errorCount = 0;
-
             }
         }
     }
