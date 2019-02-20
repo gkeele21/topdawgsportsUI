@@ -1,6 +1,6 @@
 <template>
-    <div>
-<!--        <div class="row">
+  <div>
+    <!--        <div class="row">
             <div class="col-md-12">
                 {{ msg }}
                 <div class="table-responsive">
@@ -32,70 +32,83 @@
         </div>
 
         <hr />
--->
-        <b-table striped hover :items="items" :fields="fields" caption-top>
-            <template slot="table-caption">
-                Seasons List
-            </template>
-            <template slot="Name" slot-scope="data">
-                <b-link :to="{ name: 'seasoninfo', params: {seasonid: data.item.SeasonID}}">{{data.value}}</b-link>
-            </template>
-        </b-table>
-
-    </div>
+    -->
+    <b-table
+      striped
+      hover
+      :items="items"
+      :fields="fields"
+      caption-top
+      @row-clicked="myRowClickHandler"
+    >
+      <template slot="table-caption">Seasons List</template>
+      <!--      <template slot="Name" slot-scope="data">
+        <b-link :to="{ name: 'seasoninfo', params: {seasonid: data.item.SeasonID}}">{{data.value}}</b-link>
+      </template>-->
+    </b-table>
+  </div>
 </template>
 
 <script>
-    import Vue from 'vue';
-    import axios from 'axios';
+import Vue from "vue";
+import axios from "axios";
 
-    Vue.use(axios);
+Vue.use(axios);
 
-    export default {
-        name: 'SeasonsTable',
-        props: {
-            msg: String
+export default {
+  name: "SeasonsTable",
+  props: {
+    msg: String
+  },
+  data() {
+    return {
+      fields: [
+        {
+          key: "SeasonID",
+          sortable: true
         },
-        data () {
-            return {
-                fields: [
-                    {
-                        key: 'SeasonID',
-                        sortable: true
-                    },
-                    {
-                        key: 'StartingYear',
-                        sortable: true
-                    },
-                    {
-                        key: 'Name',
-                        sortable: true,
-                    },
-                    'SportName',
-                    {
-                        key: 'SportLevel'
-                    },
-                    {
-                        key: 'Status'
-                    }
-                ],
-                items: null
-            }
+        {
+          key: "StartingYear",
+          sortable: true
         },
-        mounted () {
-            axios.get('/api/seasons', {
-                params: {
-                    orderBy: 'season_id',
-                    orderByAsc: 'desc',
-                    includeSportLevels: 'true'
-                }
-            })
-            .then((response) => {
-                this.items = response.data;
-            })
-            .catch(e => {
-                alert("error getting results" + e);
-            })
+        {
+          key: "Name",
+          sortable: true
+        },
+        "SportName",
+        {
+          key: "SportLevel"
+        },
+        {
+          key: "Status"
         }
+      ],
+      items: []
+    };
+  },
+  mounted() {
+    axios
+      .get("/api/seasons", {
+        params: {
+          orderBy: "season_id",
+          orderByAsc: "desc",
+          includeSportLevels: "true"
+        }
+      })
+      .then(response => {
+        this.items = response.data;
+      })
+      .catch(e => {
+        alert("error getting results" + e);
+      });
+  },
+  methods: {
+    myRowClickHandler(record) {
+      this.$router.push({
+        name: "seasoninfo",
+        params: { seasonid: record["SeasonID"] }
+      });
     }
+  }
+};
 </script>
