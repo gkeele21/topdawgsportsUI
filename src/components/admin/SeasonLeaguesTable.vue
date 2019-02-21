@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-table striped hover :items="leagues" caption-top>
+    <b-table striped hover :items="leagues" caption-top @row-clicked="myRowClickHandler">
       <template slot="table-caption">{{ fantasyGameName }} Leagues</template>
     </b-table>
   </div>
@@ -42,6 +42,14 @@ export default {
           "/leagues"
       )
       .then(response => (this.leagues = response.data));
+  },
+  methods: {
+    myRowClickHandler(record) {
+      this.$router.push({
+        name: "leagueinfo",
+        params: { leagueid: record["FantasyLeagueID"] }
+      });
+    }
   }
 };
 </script>

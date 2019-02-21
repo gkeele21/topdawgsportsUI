@@ -125,12 +125,12 @@ Vue.use(axios);
 export default {
   name: "SeasonInfoTable",
   props: {
-    seasonid: Number
+    seasonId: Number
   },
   data() {
     return {
       season: {
-        SeasonID: this.seasonid,
+        SeasonID: this.seasonId,
         Name: "",
         StartingYear: "",
         Status: "",
