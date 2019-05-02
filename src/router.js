@@ -7,6 +7,7 @@ import AdminUsers from "./views/admin/Users.vue";
 import AdminSeasons from "./views/admin/Seasons.vue";
 import AdminSeasonInfo from "./views/admin/SeasonInfo.vue";
 import AdminLeagueInfo from "./views/admin/LeagueInfo.vue";
+import SalaryCapStandings from "./views/salarycap/Standings.vue";
 
 Vue.use(Router);
 
@@ -50,6 +51,11 @@ export default new Router({
       path: "/admin/league/:leagueid",
       component: AdminLeagueInfo,
       props: true
+    },
+    {
+      path: "/salarycap/standings",
+      name: "salarycapstandings",
+      component: SalaryCapStandings
     }
   ]
 });

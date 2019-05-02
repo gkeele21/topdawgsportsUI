@@ -1,18 +1,18 @@
 <template>
   <div class="about">
-      <the-header/>
+    <MainHeader/>
     <h1>This is an about page</h1>
   </div>
 </template>
 
 <script>
-    // @ is an alias to /src
-    import TheHeader from '@/components/TheHeader.vue'
+// @ is an alias to /src
+import MainHeader from "@/components/MainHeader.vue";
 
-    export default {
-        name: 'about',
-        components: {
-            TheHeader
-        }
-    }
+export default {
+  name: "about",
+  components: {
+    MainHeader
+  }
+};
 </script>
