@@ -7,70 +7,57 @@
     <div id="mainContent">
       <div id="leftSide">
         <div id="topRow">
-          <h3 class="gameHeading">Fantasy Golf</h3>
-          <img class="golfimage">
+          <div>
+            <p class="gameTitle">Fantasy Golf</p>
+            <img src="../assets/GolfPin.png">
+          </div>
         </div>
         <div id="middleRow">
           <div>
-            <h3 class="gameHeading">Bracket Challenge</h3>
-            <img class="golfimage">
-            <h3 class="gameHeading">Seed Challenge</h3>
-            <img class="golfimage">
+            <p class="gameTitle">Seed Challenge</p>
+            <img src="../assets/Basketball.png">
+          </div>
+          <div>
+            <p class="gameTitle">Bracket Challenge</p>
+            <img src="../assets/Brackets.png">
           </div>
         </div>
+
         <div id="bottomRow">
-          <img class="golfimage">
-          <img class="golfimage">
-          <img class="golfimage">
-          <img class="golfimage">
+          <div>
+            <p class="gameTitle">Fantasy Football</p>
+            <img src="../assets/Football.png">
+          </div>
+
+          <div>
+            <p class="gameTitle">Salary Cap</p>
+            <img src="../assets/SalaryCap.png">
+          </div>
+
+          <div>
+            <p class="gameTitle">Love Em & Leave Em</p>
+            <img src="../assets/Trophy.png">
+          </div>
+          <div>
+            <p class="gameTitle">Pickem</p>
+            <img src="../assets/Helmet.png">
+          </div>
         </div>
       </div>
+
       <div id="rightSide">
-        <h2>Informational</h2>
+        <h2>Game Name</h2>
+        <label class="infoHeading">Description:</label>
+        <p></p>
+        <label class="infoHeading">Registration Deadline:</label>
+        <p></p>
+        <label class="infoHeading">Cost:</label>
+        <p></p>
+        <label class="infoHeading">League Type:</label>
+        <p></p>
+        <label class="infoHeading">Prize(s):</label>
+        <p></p>
       </div>
-      <!-- <div id="topSection">
-        <div id="marchMadness">
-          <h2>March Madness</h2>
-          <div id="bracketChallenge">
-            <h3>Bracket Challenge</h3>
-            <img>
-          </div>
-          <div id="seedChallenge">
-            <h3>Seed Challenge</h3>
-            <img>
-          </div>
-        </div>
-
-        <div id="golf">
-          <h2>Golf</h2>
-          <div id="phase1">
-            <h3>Golf</h3>
-            <img>
-          </div>
-        </div>
-      </div>
-
-      <div id="bottomSection">
-        <div id="fantasyFootball">
-          <h2>Football</h2>
-          <div id="headToHead">
-            <h3>Fantasy Football</h3>
-            <img>
-          </div>
-          <div id="salaryCap">
-            <h3>Salary Cap</h3>
-            <img>
-          </div>
-          <div id="pickem">
-            <h3>Pickem</h3>
-            <img>
-          </div>
-          <div id="loveEm">
-            <h3>Love Em &amp; Leave Em</h3>
-            <img>
-          </div>
-        </div>
-      </div>-->
     </div>
   </div>
 </template>
@@ -91,102 +78,33 @@ export default {
 
 <style>
 #mainContent {
-  margin-left: 250px;
-  margin-top: 10px;
-  text-align: center;
+  margin-top: 25px;
 }
 
 #leftSide {
-  width: 50%;
   float: left;
+  margin-top: 5px;
+  margin-left: 125px;
   text-align: center;
-  border: 0px;
+  width: 60%;
 }
-
-#rightSide {
-  width: 50%;
-  float: left;
-}
-
 #leftSide img {
-  height: 112px;
-  width: 112px;
-  border-style: none;
+  padding: 0px 35px;
+}
+#middleRow div,
+#bottomRow div {
+  display: inline-block;
+}
+.gameTitle {
+  color: darkred;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.infoHeading {
+  font-weight: bold;
 }
 
-#middleRow > div {
-  display: inline;
-}
-
-.golfimage {
-  background: url(../assets/SportsSet2.png) 120px -10px;
-}
-
-/* #mainContent {
-  margin-left: 250px;
-  margin-top: 10px;
+h2 {
   text-align: center;
 }
-
-#mainContent img {
-  height: 112px;
-  width: 112px;
-}
-
-#mainContent h2 {
-  color: white;
-}
-
-#bracketChallenge img {
-  background: url(../assets/SportsSet.png) -265px -10px;
-}
-#seedChallenge img {
-  background: url(../assets/SportsSet.png) -135px -10px;
-}
-
-#golf img {
-  background: url(../assets/SportsSet.png) 120px -10px;
-}
-
-#headToHead img {
-  background: url(../assets/FootballSet.png) 245px -10px;
-}
-#salaryCap img {
-  background: url(../assets/FootballSet.png) 120px -10px;
-}
-#pickem img {
-  background: url(../assets/FootballSet.png) -135px -10px;
-}
-#loveEm img {
-  background: url(../assets/FootballSet.png) -266px -10px;
-}
-
-#bottomSection {
-  margin-top: 20px;
-  overflow: hidden;
-}
-#topSection {
-  overflow: hidden;
-  text-align: center;
-}
-#bottomSection div,
-#topSection div {
-  background-color: #ab9869;
-  border-radius: 40px;
-  float: left;
-  margin: 0px 15px;
-  padding: 15px;
-}
-#bottomSection div div,
-#topSection div div {
-  cursor: pointer;
-}
-
-#fantasyFootball,
-#golf,
-#marchMadness {
-  background-color: #45597c !important;
-  border: thick solid black;
-  color: #2b1a0a;
-} */
 </style>

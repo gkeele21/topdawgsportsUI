@@ -8,17 +8,12 @@
 
 * {
   padding: 0;
-}
-
-html {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Palatino Linotype", "Avenir", Helvetica, Arial, sans-serif;
 }
 
 #mainHeader {
-  /* border-bottom: medium solid #45597c; */
-  background-image: linear-gradient(to bottom right, #2a2054, #45597c, #2a2054);
+  background-image: linear-gradient(to right, #2a2054, #45597c, #2a2054);
+  /*background-color: #2a2054;*/
   color: white;
   padding: 15px 0px;
   text-align: right;
@@ -45,7 +40,8 @@ html {
 }
 
 #sidebar {
-  background-image: linear-gradient(to bottom right, #2a2054, #45597c, #2a2054);
+  /*background-image: linear-gradient(#2a2054, #45597c);*/
+  background-color: #45597c;
   color: white;
   height: 100%;
   position: fixed;
@@ -60,7 +56,7 @@ html {
 }
 
 #sidebar i {
-  color: #45597c;
+  color: black;
   font-size: 1.2em;
   margin-left: 5px;
   text-align: center;

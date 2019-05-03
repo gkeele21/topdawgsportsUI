@@ -18,6 +18,13 @@
           <i class="fa fa-info-circle"></i>
           <router-link to="/about">About</router-link>
         </li>
+<<<<<<< HEAD
+=======
+        <li>
+          <i class="fa fa-info"></i>
+          <router-link to="/salarycap/standings">Salary Standings</router-link>
+        </li>
+>>>>>>> 0661284e16a127fb9abd833550a1775c9aaf2581
       </ul>
     </section>
   </aside>
