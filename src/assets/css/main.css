@@ -1,0 +1,79 @@
+/*
+    #2a2054 (Dark Blue)
+    #45597c (Light Blue)
+    #ab9869 (Tan)
+    #941c1c (Red)
+    #2b1a0a (Brown)
+*/
+
+* {
+  padding: 0;
+}
+
+html {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mainHeader {
+  /* border-bottom: medium solid #45597c; */
+  background-image: linear-gradient(to bottom right, #2a2054, #45597c, #2a2054);
+  color: white;
+  padding: 15px 0px;
+  text-align: right;
+  vertical-align: center;
+}
+
+#mainHeader span {
+  cursor: pointer;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+#mainHeader span {
+  padding: 0px 30px;
+}
+#mainHeader span:first-child {
+  border-right: medium solid white;
+}
+
+#mainHeader i {
+  position: fixed;
+  top: 5px;
+  left: 165px;
+}
+
+#sidebar {
+  background-image: linear-gradient(to bottom right, #2a2054, #45597c, #2a2054);
+  color: white;
+  height: 100%;
+  position: fixed;
+  transition: 0.5s;
+  width: 165px;
+  z-index: 1;
+}
+
+#sidebar li {
+  text-align: left;
+  padding-top: 15px;
+}
+
+#sidebar i {
+  color: #45597c;
+  font-size: 1.2em;
+  margin-left: 5px;
+  text-align: center;
+  width: 20px;
+}
+
+#sidebarMenu a {
+  color: white;
+  margin-left: 10px;
+  text-align: left;
+  text-decoration: none;
+}
+
+#sidebarMenu a:visited {
+  color: white;
+}
