@@ -1,23 +1,35 @@
 <template>
   <div class="home">
-    <AdminSidebar/>
-    <AdminHeader/>
-    <UsersTable msg="My Users"/>
+    <AdminSidebar></AdminSidebar>
+
+    <AdminHeader></AdminHeader>
+
+    <div id="mainContent">
+      <h2>Welcome to your admin dashboard</h2>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import UsersTable from "@/components/admin/UsersTable.vue";
 import AdminHeader from "@/components/admin/AdminHeader.vue";
 import AdminSidebar from "@/components/admin/AdminSidebar.vue";
 
 export default {
-  name: "users",
+  name: "dashboard",
   components: {
-    UsersTable,
     AdminHeader,
     AdminSidebar
   }
 };
 </script>
+
+<style>
+#mainContent {
+  margin-top: 25px;
+}
+
+h2 {
+  text-align: center;
+}
+</style>

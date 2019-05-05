@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <TheAdminHeader/>
+    <AdminSidebar/>
+    <AdminHeader/>
     <SeasonInfoTable v-bind:seasonId="seasonId"/>
     <hr>
     <br>
@@ -13,14 +14,16 @@
 <script>
 // @ is an alias to /src
 import SeasonInfoTable from "@/components/admin/SeasonInfoTable.vue";
-import TheAdminHeader from "@/components/admin/TheAdminHeader.vue";
+import AdminHeader from "@/components/admin/AdminHeader.vue";
+import AdminSidebar from "@/components/admin/AdminSidebar.vue";
 import SeasonLeagues from "@/components/admin/SeasonLeaguesTable.vue";
 
 export default {
   name: "seasoninfo",
   components: {
     SeasonInfoTable,
-    TheAdminHeader,
+    AdminHeader,
+    AdminSidebar,
     SeasonLeagues
   },
   data() {

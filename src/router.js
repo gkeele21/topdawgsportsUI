@@ -1,8 +1,13 @@
 import Vue from "vue";
+
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import About from "./views/About.vue";
-import AdminDashboard from "./views/admin/Dashboard.vue";
+import Login from "./views/Login.vue";
+import Register from "./views/Register.vue";
+import Dashboard from "./views/Dashboard.vue";
+
+import AdminDashboard from "./views/admin/AdminDashboard.vue";
 import AdminUsers from "./views/admin/Users.vue";
 import AdminSeasons from "./views/admin/Seasons.vue";
 import AdminSeasonInfo from "./views/admin/SeasonInfo.vue";
@@ -11,7 +16,7 @@ import SalaryCapStandings from "./views/salarycap/Standings.vue";
 
 Vue.use(Router);
 
-export default new Router({
+let router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -21,9 +26,24 @@ export default new Router({
       component: Home
     },
     {
+      path: "/dashboard",
+      name: "dashboard",
+      component: Dashboard
+    },
+    {
       path: "/about",
       name: "about",
       component: About
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: Register
     },
     {
       path: "/admin",
@@ -33,24 +53,36 @@ export default new Router({
     {
       path: "/admin/seasons",
       name: "seasons",
-      component: AdminSeasons
+      component: AdminSeasons,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/admin/users",
       name: "users",
-      component: AdminUsers
+      component: AdminUsers,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       name: "seasoninfo",
       path: "/admin/seasons/:seasonid",
       component: AdminSeasonInfo,
-      props: true
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       name: "leagueinfo",
       path: "/admin/league/:leagueid",
       component: AdminLeagueInfo,
-      props: true
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/salarycap/standings",
@@ -59,3 +91,17 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next();
+      return;
+    }
+    next("/login");
+  } else {
+    next();
+  }
+});
+
+export default router;

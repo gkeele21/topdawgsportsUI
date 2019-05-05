@@ -18,7 +18,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "MainHeader",
+  name: "AdminHeader",
   computed: {
     ...mapGetters(["authUser", "isLoggedIn"])
   },

@@ -17,23 +17,31 @@
             <i class="fa fa-desktop"></i>
             <router-link to="/dashboard">Dashboard</router-link>
           </li>
+          <li>
+            <i class="fa fa-info-circle"></i>
+            <router-link to="/admin/users">Users</router-link>
+          </li>
+          <li>
+            <i class="fa fa-info-circle"></i>
+            <router-link to="/admin/seasons">Seasons</router-link>
+          </li>
+          <li>
+            <i class="fa fa-info"></i>
+            <router-link to="/salarycap/standings">Salary Standings</router-link>
+          </li>
         </span>
-        <li>
-          <i class="fa fa-info-circle"></i>
-          <router-link to="/about">About</router-link>
-        </li>
       </ul>
     </section>
   </aside>
 </template>
 
-<style src="../assets/css/main.css"></style>
+<style src="@/assets/css/main.css"></style>
 
 <script>
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Sidebar",
+  name: "AdminSidebar",
   computed: {
     ...mapGetters(["authUser", "isLoggedIn", "isAdmin"])
   },
