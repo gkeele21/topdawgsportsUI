@@ -32,14 +32,16 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:8888/login",
+          url: "/td/login",
           data: user,
           method: "POST"
         })
           .then(resp => {
             const token = resp.data.Token;
             localStorage.setItem("token", token);
-            axios.defaults.headers.common["Authorization"] = token;
+            axios.defaults.headers.common = {
+              Authorization: `Bearer ${token}`
+            };
             commit("auth_success", resp.data);
             resolve(resp);
           })
@@ -54,14 +56,16 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:8888/register",
+          url: "/td/register",
           data: user,
           method: "POST"
         })
           .then(resp => {
             const token = resp.data.Token;
             localStorage.setItem("token", token);
-            axios.defaults.headers.common["Authorization"] = token;
+            axios.defaults.headers.common = {
+              Authorization: `Bearer ${token}`
+            };
             commit("auth_success", resp.data);
             resolve(resp);
           })

@@ -1,5 +1,5 @@
 import Vue from "vue";
-
+import store from "./store.js";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import About from "./views/About.vue";
@@ -48,11 +48,14 @@ let router = new Router({
     {
       path: "/admin",
       name: "admindashboard",
-      component: AdminDashboard
+      component: AdminDashboard,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/admin/seasons",
-      name: "seasons",
+      name: "adminseasons",
       component: AdminSeasons,
       meta: {
         requiresAuth: true
@@ -60,7 +63,7 @@ let router = new Router({
     },
     {
       path: "/admin/users",
-      name: "users",
+      name: "adminusers",
       component: AdminUsers,
       meta: {
         requiresAuth: true
