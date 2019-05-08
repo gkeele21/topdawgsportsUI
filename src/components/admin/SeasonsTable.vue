@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/api/seasons", {
+      .get("http://localhost:8888/api/v1/seasons", {
         params: {
           orderBy: "season_id",
           orderByAsc: "desc",

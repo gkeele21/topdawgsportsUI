@@ -147,12 +147,14 @@ export default {
     };
   },
   mounted() {
-    axios.get("/api/seasons/" + this.season.SeasonID + "/").then(response => {
-      this.season = response.data;
-      // Vue.console.log("SeasonInfo: " + JSON.stringify(response.data));
-    });
+    axios
+      .get("http://localhost:8888/api/v1/seasons/" + this.season.SeasonID)
+      .then(response => {
+        this.season = response.data;
+        // Vue.console.log("SeasonInfo: " + JSON.stringify(response.data));
+      });
 
-    axios.get("/api/sportlevels").then(response => {
+    axios.get("http://localhost:8888/api/v1/sportlevels").then(response => {
       var numResults = response.data.length;
       // Vue.console.log("Num Sport Levels : " + numResults);
       for (var j = 0; j < numResults; j++) {
@@ -167,19 +169,14 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      fetch("/api/seasons/" + this.season.SeasonID, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-          "Content-Type": "application/json"
-          // "Content-Type": "application/x-www-form-urlencoded",
-        },
-        redirect: "follow", // manual, *follow, error
-        referrer: "no-referrer", // no-referrer, *client
-        body: JSON.stringify(this.season) // body data type must match "Content-Type" header
-      })
+      axios
+        .post(
+          "http://localhost:8888/api/v1/seasons/" + this.season.SeasonID,
+          this.season,
+          {
+            headers: { "content-type": "application/json" }
+          }
+        )
         .then(response => {
           this.successCount = 5;
           this.errorCount = 0;

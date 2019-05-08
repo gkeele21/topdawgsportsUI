@@ -35,7 +35,7 @@ export default {
   mounted() {
     axios
       .get(
-        "/api/seasons/" +
+        "http://localhost:8888/api/v1/seasons/" +
           this.$route.params.seasonid +
           "/games/" +
           this.fantasyGameId +

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <AdmimSidebar/>
+    <AdminSidebar/>
     <AdminHeader/>
     <SeasonsTable msg="My Seasons"/>
   </div>
