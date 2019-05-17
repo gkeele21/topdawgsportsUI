@@ -6,16 +6,16 @@
     </section>
     <section id="sidebarMenu">
       <ul>
-        <span v-if="isAdmin">
-          <li>
-            <i class="fa fa-user-secret"></i>
-            <router-link to="/admin">Admin</router-link>
-          </li>
-        </span>
         <span v-if="isLoggedIn">
           <li>
             <i class="fa fa-desktop"></i>
             <router-link to="/dashboard">Dashboard</router-link>
+          </li>
+        </span>
+        <span v-if="isAdmin">
+          <li>
+            <i class="fa fa-user-secret"></i>
+            <router-link to="/admin">Admin</router-link>
           </li>
         </span>
         <li>

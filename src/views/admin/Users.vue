@@ -2,7 +2,18 @@
   <div class="home">
     <AdminSidebar/>
     <AdminHeader/>
-    <UsersTable msg="My Users"/>
+    <b-container>
+      <b-row>
+        <b-col>
+          <b-breadcrumb :items="items"></b-breadcrumb>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <UsersTable msg="My Users"/>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -18,6 +29,20 @@ export default {
     UsersTable,
     AdminHeader,
     AdminSidebar
+  },
+  data() {
+    return {
+      items: [
+        {
+          text: "Admin",
+          to: { name: "admindashboard" }
+        },
+        {
+          text: "Users",
+          active: true
+        }
+      ]
+    };
   }
 };
 </script>

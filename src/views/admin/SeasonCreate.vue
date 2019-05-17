@@ -10,7 +10,12 @@
       </b-row>
       <b-row>
         <b-col>
-          <SeasonsTable msg="My Seasons"/>
+          <SeasonCreateTable/>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <hr>
         </b-col>
       </b-row>
     </b-container>
@@ -19,14 +24,14 @@
 
 <script>
 // @ is an alias to /src
-import SeasonsTable from "@/components/admin/SeasonsTable.vue";
+import SeasonCreateTable from "@/components/admin/SeasonCreateTable.vue";
 import AdminHeader from "@/components/admin/AdminHeader.vue";
 import AdminSidebar from "@/components/admin/AdminSidebar.vue";
 
 export default {
-  name: "seasons",
+  name: "seasoncreate",
   components: {
-    SeasonsTable,
+    SeasonCreateTable,
     AdminHeader,
     AdminSidebar
   },
@@ -39,6 +44,10 @@ export default {
         },
         {
           text: "Seasons",
+          to: { name: "adminseasons" }
+        },
+        {
+          text: "SeasonCreate",
           active: true
         }
       ]

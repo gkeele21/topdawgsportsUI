@@ -1,12 +1,21 @@
 <template>
   <div class="home">
     <AdminSidebar></AdminSidebar>
-
     <AdminHeader></AdminHeader>
-
-    <div id="mainContent">
-      <h2>Welcome to your admin dashboard</h2>
-    </div>
+    <b-container>
+      <b-row>
+        <b-col cols="12">
+          <b-breadcrumb :items="items"></b-breadcrumb>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <div id="mainContent">
+            <h2>Welcome to your admin dashboard!</h2>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -20,6 +29,16 @@ export default {
   components: {
     AdminHeader,
     AdminSidebar
+  },
+  data() {
+    return {
+      items: [
+        {
+          text: "Admin",
+          active: true
+        }
+      ]
+    };
   }
 };
 </script>

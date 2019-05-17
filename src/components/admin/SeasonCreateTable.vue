@@ -7,7 +7,7 @@
       dismissible
       fade
       @dismissed="successCount=0"
-    >Changes have been saved.</b-alert>
+    >New Season have been saved.</b-alert>
     <b-alert
       id="updateError"
       variant="danger"
@@ -27,19 +27,6 @@
     <b-form @submit="onSubmit">
       <b-container>
         <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="seasonIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Season ID:"
-            >
-              <b-form-input id="seasonId" type="text" v-model="season.SeasonID" disabled></b-form-input>
-            </b-form-group>
-          </b-col>
           <b-col cols="6">
             <b-form-group
               id="seasonNameGroup"
@@ -123,16 +110,12 @@ Vue.use(BootstrapVue);
 Vue.use(axios);
 
 export default {
-  name: "SeasonInfoTable",
-  props: {
-    seasonId: Number
-  },
+  name: "SeasonCreateTable",
   data() {
     return {
       season: {
-        SeasonID: this.seasonId,
         Name: "",
-        StartingYear: "",
+        StartingYear: 0,
         Status: "",
         SportLevelID: ""
       },
@@ -147,13 +130,6 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get("http://localhost:8888/api/v1/seasons/" + this.season.SeasonID)
-      .then(response => {
-        this.season = response.data;
-        // Vue.console.log("SeasonInfo: " + JSON.stringify(response.data));
-      });
-
     axios.get("http://localhost:8888/api/v1/sportlevels").then(response => {
       var numResults = response.data.length;
       // Vue.console.log("Num Sport Levels : " + numResults);
@@ -170,16 +146,15 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       axios
-        .put(
-          "http://localhost:8888/api/v1/seasons/" + this.season.SeasonID,
-          this.season,
-          {
-            headers: { "content-type": "application/json" }
-          }
-        )
+        .post("http://localhost:8888/api/v1/seasons", this.season, {
+          headers: { "content-type": "application/json" }
+        })
         .then(response => {
           this.successCount = 5;
           this.errorCount = 0;
+          this.$router.push({
+            name: "adminseasons"
+          });
           return response;
         })
         .catch(e => {

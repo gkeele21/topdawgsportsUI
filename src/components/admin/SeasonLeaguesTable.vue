@@ -1,21 +1,29 @@
 <template>
   <div>
-    <b-table striped hover :items="leagues" caption-top @row-clicked="myRowClickHandler">
-      <template slot="table-caption">{{ fantasyGameName }} Leagues</template>
-    </b-table>
+    <b-container>
+      <b-row align-h="end">
+        <b-col cols="1" align-self="end">
+          <b-button
+            pill
+            variant="success"
+            @click="$router.push({name: 'adminleaguecreate', params: { seasonId: seasonId}})"
+          >+</b-button>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-table striped hover :items="leagues" caption-top @row-clicked="myRowClickHandler">
+            <template slot="table-caption">{{ fantasyGameName }} Leagues</template>
+          </b-table>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import axios from "axios";
-import BootstrapVue from "bootstrap-vue";
-
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-
-Vue.use(axios);
-Vue.use(BootstrapVue);
 
 export default {
   name: "SeasonLeague",
@@ -29,7 +37,8 @@ export default {
     return {
       fantasyGameId: this.gameInfo.gameId,
       fantasyGameName: this.gameInfo.gameName,
-      leagues: []
+      leagues: [],
+      seasonId: this.$route.params.seasonid
     };
   },
   mounted() {
@@ -46,7 +55,7 @@ export default {
   methods: {
     myRowClickHandler(record) {
       this.$router.push({
-        name: "leagueinfo",
+        name: "adminleagueinfo",
         params: { leagueid: record["FantasyLeagueID"] }
       });
     }

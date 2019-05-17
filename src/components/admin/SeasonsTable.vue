@@ -33,27 +33,32 @@
 
         <hr />
     -->
-    <b-table
-      striped
-      hover
-      :items="items"
-      :fields="fields"
-      caption-top
-      @row-clicked="myRowClickHandler"
-    >
-      <template slot="table-caption">Seasons List</template>
-      <!--      <template slot="Name" slot-scope="data">
+    <b-container>
+      <b-row align-h="end">
+        <b-col cols="1" align-self="end">
+          <b-button pill variant="success" @click="$router.push({name: 'adminseasoncreate'})">+</b-button>
+        </b-col>
+      </b-row>
+      <b-table
+        striped
+        hover
+        :items="items"
+        :fields="fields"
+        caption-top
+        @row-clicked="myRowClickHandler"
+      >
+        <template slot="table-caption">Seasons List</template>
+        <!--      <template slot="Name" slot-scope="data">
         <b-link :to="{ name: 'seasoninfo', params: {seasonid: data.item.SeasonID}}">{{data.value}}</b-link>
-      </template>-->
-    </b-table>
+        </template>-->
+      </b-table>
+    </b-container>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import axios from "axios";
-
-Vue.use(axios);
 
 export default {
   name: "SeasonsTable",
@@ -105,7 +110,7 @@ export default {
   methods: {
     myRowClickHandler(record) {
       this.$router.push({
-        name: "seasoninfo",
+        name: "adminseasoninfo",
         params: { seasonid: record["SeasonID"] }
       });
     }

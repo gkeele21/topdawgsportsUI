@@ -32,19 +32,6 @@
         <b-form-row align-h="center">
           <b-col cols="6">
             <b-form-group
-              id="leagueIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="League ID:"
-            >
-              <b-form-input id="leagueId" type="text" v-model="league.FantasyLeagueID" disabled></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
               id="leagueNameGroup"
               horizontal
               label-cols="4"
@@ -188,6 +175,7 @@ import Vue from "vue";
 import axios from "axios";
 import BootstrapVue from "bootstrap-vue";
 import moment from "moment";
+import { mapState } from "vuex";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -204,7 +192,6 @@ export default {
   data() {
     return {
       league: {
-        FantasyLeagueID: this.leagueid,
         SeasonID: "",
         FantasyGameID: "",
         Name: "",
@@ -229,30 +216,8 @@ export default {
       errorCount: 0
     };
   },
-  mounted() {
-    axios
-      .get(
-        "http://localhost:8888/api/v1/fantasyleagues/" +
-          this.league.FantasyLeagueID
-      )
-      .then(response => {
-        this.league = response.data;
-        this.league.CreatedDate = moment(
-          String(this.league.CreatedDate)
-        ).format("YYYY-MM-DD hh:mm");
-      });
-
-    // axios.get("/api/sportlevels").then(response => {
-    //   var numResults = response.data.length;
-    //   // Vue.console.log("Num Sport Levels : " + numResults);
-    //   for (var j = 0; j < numResults; j++) {
-    //     var id = response.data[j].SportLevelID;
-    //     var level = response.data[j].SportLevel;
-    //     var sportname = response.data[j].SportName;
-    //     var text = id + " - " + sportname + " - " + level;
-    //     this.sportlevels.push({ text: text, value: id });
-    //   }
-    // });
+  computed: {
+    ...mapState(["adminSeasonId"])
   },
   methods: {
     onSubmit(event) {
@@ -279,6 +244,9 @@ export default {
           return e;
         });
     }
+  },
+  created: function() {
+    this.league.SeasonID = this.adminSeasonId;
   }
 };
 </script>

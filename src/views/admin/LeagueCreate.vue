@@ -10,7 +10,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <LeagueInfoTable v-bind:leagueid="leagueId"/>
+          <LeagueCreateTable/>
         </b-col>
       </b-row>
       <b-row>
@@ -29,13 +29,13 @@
 // @ is an alias to /src
 import AdminHeader from "@/components/admin/AdminHeader.vue";
 import AdminSidebar from "@/components/admin/AdminSidebar.vue";
-import LeagueInfoTable from "@/components/admin/LeagueInfoTable.vue";
+import LeagueCreateTable from "@/components/admin/LeagueCreateTable.vue";
 import { mapState } from "vuex";
 
 export default {
-  name: "leagueinfo",
+  name: "leaguecreate",
   components: {
-    LeagueInfoTable,
+    LeagueCreateTable,
     AdminHeader,
     AdminSidebar
   },
@@ -44,7 +44,6 @@ export default {
   },
   data() {
     return {
-      leagueId: this.$route.params.leagueid,
       items: []
     };
   },
@@ -66,7 +65,7 @@ export default {
         }
       },
       {
-        text: "LeagueInfo",
+        text: "LeagueCreate",
         active: true
       }
     ];

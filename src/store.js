@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     status: "",
     accessToken: localStorage.getItem("token") || "",
-    currentUser: {}
+    currentUser: {},
+    adminSeasonId: ""
   },
   mutations: {
     auth_request(state) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     logout(state) {
       state.status = "";
       state.accessToken = "";
+    },
+    setAdminSeasonId(state, data) {
+      state.adminSeasonId = data.adminSeasonId;
     }
   },
   actions: {
@@ -83,10 +87,18 @@ export default new Vuex.Store({
         delete axios.defaults.headers.common["Authorization"];
         resolve();
       });
+    },
+    setAdminSeasonId({ commit }, adminSeasonId) {
+      return new Promise((resolve, reject) => {
+        commit("setAdminSeasonId", adminSeasonId);
+        resolve();
+      });
     }
   },
   getters: {
-    isLoggedIn: state => !!state.accessToken,
+    isLoggedIn: state => {
+      return !!state.currentUser.username;
+    },
     authStatus: state => {
       return state.status;
     },
@@ -95,6 +107,9 @@ export default new Vuex.Store({
     },
     isAdmin: state => {
       return state.currentUser.is_admin;
+    },
+    adminSeasonId: state => {
+      return state.adminSeasonId;
     }
   }
 });

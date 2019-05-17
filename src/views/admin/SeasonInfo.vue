@@ -2,12 +2,33 @@
   <div class="home">
     <AdminSidebar/>
     <AdminHeader/>
-    <SeasonInfoTable v-bind:seasonId="seasonId"/>
-    <hr>
-    <br>
-    <SeasonLeagues v-bind:gameInfo="{gameId: 1, gameName:'Head to Head'}"/>
-    <hr>
-    <SeasonLeagues v-bind:gameInfo="{gameId: 2, gameName:'Salary Cap'}"/>
+    <b-container>
+      <b-row>
+        <b-col>
+          <b-breadcrumb :items="items"></b-breadcrumb>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <SeasonInfoTable v-bind:seasonId="seasonId"/>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <hr>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <SeasonLeagues v-bind:gameInfo="{gameId: 1, gameName:'Head to Head'}"/>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <SeasonLeagues v-bind:gameInfo="{gameId: 2, gameName:'Salary Cap'}"/>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -28,8 +49,25 @@ export default {
   },
   data() {
     return {
-      seasonId: this.$route.params.seasonid
+      seasonId: this.$route.params.seasonid,
+      items: [
+        {
+          text: "Admin",
+          to: { name: "admindashboard" }
+        },
+        {
+          text: "Seasons",
+          to: { name: "adminseasons" }
+        },
+        {
+          text: "SeasonInfo",
+          active: true
+        }
+      ]
     };
+  },
+  mounted() {
+    this.$store.dispatch("setAdminSeasonId", { adminSeasonId: this.seasonId });
   }
 };
 </script>
