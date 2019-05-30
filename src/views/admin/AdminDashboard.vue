@@ -12,6 +12,8 @@
         <b-col>
           <div id="mainContent">
             <h2>Welcome to your admin dashboard!</h2>
+            <i class="account-logout"/>
+            <font-awesome-icon icon="coffee"/>
           </div>
         </b-col>
       </b-row>

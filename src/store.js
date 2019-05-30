@@ -9,7 +9,8 @@ export default new Vuex.Store({
     status: "",
     accessToken: localStorage.getItem("token") || "",
     currentUser: {},
-    adminSeasonId: ""
+    adminSeasonId: "",
+    adminLeagueId: ""
   },
   mutations: {
     auth_request(state) {
@@ -19,6 +20,8 @@ export default new Vuex.Store({
       state.status = "success";
       state.accessToken = data.Token;
       state.currentUser = data.User;
+      console.log("AuthUser :");
+      console.log(state.currentUser);
     },
     auth_error(state) {
       state.status = "error";
@@ -26,9 +29,13 @@ export default new Vuex.Store({
     logout(state) {
       state.status = "";
       state.accessToken = "";
+      state.currentUser = {};
     },
     setAdminSeasonId(state, data) {
       state.adminSeasonId = data.adminSeasonId;
+    },
+    setAdminLeagueId(state, data) {
+      state.adminLeagueId = data.adminLeagueId;
     }
   },
   actions: {
@@ -89,8 +96,16 @@ export default new Vuex.Store({
       });
     },
     setAdminSeasonId({ commit }, adminSeasonId) {
+      console.log("setting adminSeasonId to " + adminSeasonId);
       return new Promise((resolve, reject) => {
         commit("setAdminSeasonId", adminSeasonId);
+        resolve();
+      });
+    },
+    setAdminLeagueId({ commit }, adminLeagueId) {
+      console.log("setting adminLeagueId to " + adminLeagueId);
+      return new Promise((resolve, reject) => {
+        commit("setAdminLeagueId", adminLeagueId);
         resolve();
       });
     }
@@ -105,11 +120,11 @@ export default new Vuex.Store({
     authUser: state => {
       return state.currentUser.username;
     },
+    authUserId: state => {
+      return state.currentUser.user_id;
+    },
     isAdmin: state => {
       return state.currentUser.is_admin;
-    },
-    adminSeasonId: state => {
-      return state.adminSeasonId;
     }
   }
 });

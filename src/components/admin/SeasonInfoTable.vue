@@ -18,94 +18,59 @@
     >Error saving Season. Please try again.</b-alert>
 
     <b-container>
-      <b-form-row>
+      <b-row>
         <b-col>
           <h3>SEASON INFO</h3>
         </b-col>
-      </b-form-row>
-    </b-container>
-    <b-form @submit="onSubmit">
-      <b-container>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="seasonIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Season ID:"
-            >
-              <b-form-input id="seasonId" type="text" v-model="season.SeasonID" disabled></b-form-input>
-            </b-form-group>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-button
+            pill
+            variant="success"
+            @click="$router.push({name: 'adminseasonedit', params: { seasonId: seasonId}})"
+          >edit</b-button>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>&#160;</b-col>
+      </b-row>
+        <b-row align-h="center">
+          <b-col cols="2">
+            <label>Season ID:</label>
           </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="seasonNameGroup"
-              horizontal
-              label-cols="4"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Name:"
-            >
-              <b-form-input id="seasonName" type="text" v-model="season.Name"></b-form-input>
-            </b-form-group>
+          <b-col>
+            <span>{{season.SeasonID}}</span>
           </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="seasonYearGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Starting Year:"
-            >
-              <b-form-input id="startingYear" type="number" v-model.number="season.StartingYear"></b-form-input>
-            </b-form-group>
+          <b-col cols="2">
+            <label>Name:</label>
           </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="seasonSportLevelIDGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Sport Level ID:"
-            >
-              <!--<b-form-input id="sportLevelID" type="text" v-model="season.SportLevelID"></b-form-input>-->
-              <b-form-select
-                id="sportLevelID"
-                v-model="season.SportLevelID"
-                :options="sportlevels"
-              />
-            </b-form-group>
+          <b-col>
+            <span>{{season.Name}}</span>
           </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6" align-h="start">
-            <b-form-group
-              id="seasonStatusGroup"
-              horizontal
-              label-cols="4"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Status:"
-            >
-              <b-form-radio-group
-                id="seasonStatus"
-                name="seasonStatus"
-                v-model="season.Status"
-                :options="statusOptions"
-              ></b-form-radio-group>
-            </b-form-group>
+        </b-row>
+        <b-row align-h="center">
+          <b-col cols="2">
+            <label>Starting Year:</label>
           </b-col>
-        </b-form-row>
-        <b-button type="submit" variant="primary">Submit</b-button>
+          <b-col>
+            <span>{{season.StartingYear}}</span>
+          </b-col>
+          <b-col cols="2">
+            <label>Sport Level ID:</label>
+          </b-col>
+          <b-col>
+            <span>{{season.SportLevelID}}</span>
+          </b-col>
+        </b-row>
+        <b-row align-h="center">
+          <b-col cols="2">
+            <label>Status:</label>
+          </b-col>
+          <b-col>
+            <span>{{season.Status}}</span>
+          </b-col>
+        </b-row>
       </b-container>
     </b-form>
   </div>

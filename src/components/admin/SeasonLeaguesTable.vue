@@ -6,7 +6,7 @@
           <b-button
             pill
             variant="success"
-            @click="$router.push({name: 'adminleaguecreate', params: { seasonId: seasonId}})"
+            @click="$router.push({name: 'adminleaguecreate', params: { seasonId: seasonId, gameid: fantasyGameId}})"
           >+</b-button>
         </b-col>
       </b-row>

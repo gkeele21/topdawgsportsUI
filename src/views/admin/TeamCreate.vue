@@ -10,16 +10,13 @@
       </b-row>
       <b-row>
         <b-col>
-          <LeagueInfoTable v-bind:leagueid="leagueId"/>
+          <TeamCreateTable/>
         </b-col>
       </b-row>
       <b-row>
         <b-col>
           <hr>
         </b-col>
-      </b-row>
-      <b-row>
-        <LeagueTeamsTable v-bind:leagueid="leagueId"/>
       </b-row>
     </b-container>
   </div>
@@ -29,29 +26,23 @@
 // @ is an alias to /src
 import AdminHeader from "@/components/admin/AdminHeader.vue";
 import AdminSidebar from "@/components/admin/AdminSidebar.vue";
-import LeagueInfoTable from "@/components/admin/LeagueInfoTable.vue";
-import LeagueTeamsTable from "@/components/admin/LeagueTeamsTable.vue";
+import TeamCreateTable from "@/components/admin/TeamCreateTable.vue";
 import { mapState } from "vuex";
 
 export default {
-  name: "leagueinfo",
+  name: "teamcreate",
   components: {
-    LeagueInfoTable,
-    LeagueTeamsTable,
+    TeamCreateTable,
     AdminHeader,
     AdminSidebar
   },
   computed: {
-    ...mapState(["adminSeasonId"])
+    ...mapState(["adminSeasonId", "adminLeagueId"])
   },
   data() {
     return {
-      leagueId: this.$route.params.leagueid,
       items: []
     };
-  },
-  mounted() {
-    this.$store.dispatch("setAdminLeagueId", { adminLeagueId: this.leagueId });
   },
   created: function() {
     this.items = [
@@ -72,6 +63,13 @@ export default {
       },
       {
         text: "LeagueInfo",
+        to: {
+          name: "adminleagueinfo",
+          params: { leagueid: this.adminLeagueId }
+        }
+      },
+      {
+        text: "TeamCreate",
         active: true
       }
     ];

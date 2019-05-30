@@ -11,9 +11,12 @@ import AdminDashboard from "./views/admin/AdminDashboard.vue";
 import AdminUsers from "./views/admin/Users.vue";
 import AdminSeasons from "./views/admin/Seasons.vue";
 import AdminSeasonInfo from "./views/admin/SeasonInfo.vue";
+import AdminSeasonEdit from "./views/admin/SeasonEdit.vue";
 import AdminSeasonCreate from "./views/admin/SeasonCreate.vue";
 import AdminLeagueInfo from "./views/admin/LeagueInfo.vue";
 import AdminLeagueCreate from "./views/admin/LeagueCreate.vue";
+import AdminTeamInfo from "./views/admin/TeamInfo.vue";
+import AdminTeamCreate from "./views/admin/TeamCreate.vue";
 import SalaryCapStandings from "./views/salarycap/Standings.vue";
 
 Vue.use(Router);
@@ -81,6 +84,15 @@ let router = new Router({
       }
     },
     {
+      name: "adminseasonedit",
+      path: "/admin/seasons/:seasonid/edit",
+      component: AdminSeasonEdit,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       name: "adminseasoncreate",
       path: "/admin/seasons/create",
       component: AdminSeasonCreate,
@@ -101,6 +113,24 @@ let router = new Router({
       name: "adminleaguecreate",
       path: "/admin/league/create",
       component: AdminLeagueCreate,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      name: "adminteaminfo",
+      path: "/admin/team/:teamid",
+      component: AdminTeamInfo,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      name: "adminteamcreate",
+      path: "/admin/team/create",
+      component: AdminTeamCreate,
       props: true,
       meta: {
         requiresAuth: true

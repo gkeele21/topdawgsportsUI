@@ -10,7 +10,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <LeagueCreateTable/>
+          <LeagueCreateTable v-bind:gameid="gameid"/>
         </b-col>
       </b-row>
       <b-row>
@@ -34,6 +34,7 @@ import { mapState } from "vuex";
 
 export default {
   name: "leaguecreate",
+  props: { gameid: Number },
   components: {
     LeagueCreateTable,
     AdminHeader,

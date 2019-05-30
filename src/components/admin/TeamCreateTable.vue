@@ -17,13 +17,13 @@
           dismissible
           fade
           @dismissed="errorCount=0"
-        >Error saving League. Please try again.</b-alert>
+        >Error saving Team. Please try again.</b-alert>
       </b-row>
     </b-container>
     <b-container>
       <b-form-row>
         <b-col>
-          <h3>CREATE NEW LEAGUE</h3>
+          <h3>CREATE NEW TEAM</h3>
         </b-col>
       </b-form-row>
     </b-container>
@@ -32,108 +32,66 @@
         <b-form-row align-h="center">
           <b-col cols="6">
             <b-form-group
-              id="leagueNameGroup"
+              id="teamIdGroup"
               horizontal
               label-cols="4"
+              label-class="font-weight-bold pt-0"
+              label-text-align="right"
+              label="League Id:"
+            >
+              <b-form-input id="leagueId" type="text" v-model="team.FantasyLeagueID" disabled></b-form-input>
+            </b-form-group>
+          </b-col>
+          <b-col cols="6">
+            <b-form-group
+              id="teamUserId"
+              horizontal
+              label-cols="4"
+              label-for="inputHorizontal"
+              label-class="font-weight-bold pt-0"
+              label-text-align="right"
+              label="User Id:"
+            >
+              <b-form-input id="userId" type="text" v-model.number="team.UserID"></b-form-input>
+            </b-form-group>
+          </b-col>
+        </b-form-row>
+        <b-form-row align-h="center">
+          <b-col cols="6">
+            <b-form-group
+              id="teamNameGroup"
+              horizontal
+              label-cols="4"
+              label-for="inputHorizontal"
               label-class="font-weight-bold pt-0"
               label-text-align="right"
               label="Name:"
             >
-              <b-form-input id="leagueName" type="text" v-model="league.Name"></b-form-input>
+              <b-form-input id="name" type="text" v-model="team.Name"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col cols="6">
             <b-form-group
-              id="leagueCreatedBy"
+              id="teamScheduleTeamNumberGroup"
               horizontal
               label-cols="4"
               label-for="inputHorizontal"
               label-class="font-weight-bold pt-0"
               label-text-align="right"
-              label="Created By:"
+              label="Schedule Team Number:"
             >
-              <b-form-input id="createdBy" type="text" v-model="league.CreatedByUserID" disabled></b-form-input>
+              <b-form-input
+                id="scheduleTeamNumber"
+                type="text"
+                v-model.number="team.ScheduleTeamNumber"
+              ></b-form-input>
             </b-form-group>
           </b-col>
         </b-form-row>
         <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueSeasonIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Season ID:"
-            >
-              <b-form-input id="seasonID" type="text" v-model="league.SeasonID"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="leagueFantasyGameIDGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Fantasy Game ID:"
-            >
-              <b-form-input id="gameID" type="text" v-model="league.FantasyGameID"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueDescriptionGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Description:"
-            >
-              <b-form-input id="description" type="text" v-model="league.Description"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="leaguePasswordGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Password:"
-            >
-              <b-form-input id="leaguePassword" type="text" v-model="league.Password"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueVisibility"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Visibility:"
-            >
-              <b-form-radio-group
-                id="leagueVisibility"
-                name="leagueVisibility"
-                v-model="league.Visibility"
-                :options="visibilityOptions"
-              ></b-form-radio-group>
-            </b-form-group>
-          </b-col>
           <b-col cols="6" align-h="start">
             <b-form-group
-              id="leagueStatusGroup"
+              id="teamStatusGroup"
               horizontal
               label-cols="4"
               label-class="font-weight-bold pt-0"
@@ -141,9 +99,9 @@
               label="Status:"
             >
               <b-form-radio-group
-                id="leagueStatus"
-                name="leagueStatus"
-                v-model="league.Status"
+                id="teamStatus"
+                name="teamStatus"
+                v-model="team.Status"
                 :options="statusOptions"
               ></b-form-radio-group>
             </b-form-group>
@@ -171,46 +129,34 @@ Vue.use(axios);
 Vue.use(moment);
 
 export default {
-  name: "LeagueInfoTable",
-  props: {
-    gameid: Number
-  },
+  name: "TeamInfoTable",
   data() {
     return {
-      league: {
-        SeasonID: "",
-        FantasyGameID: this.$props.gameid,
+      team: {
+        UserID: 0,
+        FantasyLeagueID: "",
         Name: "",
-        Description: "",
-        LeaguePassword: "",
-        Visibility: "public",
         CreatedDate: "",
-        CreatedByUserID: "",
-        Status: "pending"
+        Status: "active",
+        ScheduleTeamNumber: ""
       },
       // sportlevels: [],
       statusOptions: [
-        { text: "Pending", value: "pending" },
         { text: "Active", value: "active" },
-        { text: "Final", value: "final" }
-      ],
-      visibilityOptions: [
-        { text: "Public", value: "public" },
-        { text: "Private", value: "private" }
+        { text: "Dormant", value: "dormant" }
       ],
       successCount: 0,
       errorCount: 0
     };
   },
   computed: {
-    ...mapState(["adminSeasonId"]),
-    ...mapGetters(["authUserId"])
+    ...mapState(["adminLeagueId"])
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
       axios
-        .post("http://localhost:8888/api/v1/fantasyleagues", this.league, {
+        .post("http://localhost:8888/api/v1/fantasyteams", this.team, {
           headers: {
             "Content-Type": "application/json"
           }
@@ -218,10 +164,9 @@ export default {
         .then(response => {
           this.successCount = 5;
           this.errorCount = 0;
-          console.log("League created : " + this.league.SeasonID);
           this.$router.push({
-            name: "adminseasoninfo",
-            params: { seasonid: this.adminSeasonId }
+            name: "adminleagueinfo",
+            params: { leagueid: this.adminLeagueId }
           });
           return response;
         })
@@ -233,8 +178,7 @@ export default {
     }
   },
   created: function() {
-    this.league.SeasonID = this.adminSeasonId;
-    this.league.CreatedByUserID = this.authUserId;
+    this.team.FantasyLeagueID = this.adminLeagueId;
   }
 };
 </script>
