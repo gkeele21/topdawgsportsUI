@@ -10,7 +10,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <TeamInfoTable v-bind:teamid="teamId"/>
+          <TeamEditTable v-bind:teamid="teamId"/>
         </b-col>
       </b-row>
     </b-container>
@@ -21,13 +21,13 @@
 // @ is an alias to /src
 import AdminHeader from "@/components/admin/AdminHeader.vue";
 import AdminSidebar from "@/components/admin/AdminSidebar.vue";
-import TeamInfoTable from "@/components/admin/TeamInfoTable.vue";
+import TeamEditTable from "@/components/admin/TeamEditTable.vue";
 import { mapState } from "vuex";
 
 export default {
   name: "teaminfo",
   components: {
-    TeamInfoTable,
+    TeamEditTable,
     AdminHeader,
     AdminSidebar
   },
@@ -40,10 +40,6 @@ export default {
       items: []
     };
   },
-  mounted() {
-    this.$store.dispatch("setAdminTeamId", { adminTeamId: this.teamId });
-  },
-
   created: function() {
     this.items = [
       {
@@ -70,6 +66,13 @@ export default {
       },
       {
         text: "TeamInfo",
+        to: {
+          name: "adminteaminfo",
+          params: { teamid: this.adminTeamId }
+        }
+      },
+      {
+        text: "TeamEdit",
         active: true
       }
     ];

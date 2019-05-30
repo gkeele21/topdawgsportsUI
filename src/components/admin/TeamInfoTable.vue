@@ -21,123 +21,76 @@
       </b-row>
     </b-container>
     <b-container>
-      <b-form-row>
+      <b-row>
         <b-col>
           <h3>TEAM INFO</h3>
         </b-col>
-      </b-form-row>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-button
+            pill
+            variant="success"
+            @click="$router.push({name: 'adminteamedit', params: { teamid: teamid}})"
+          >edit</b-button>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>&#160;</b-col>
+      </b-row>
     </b-container>
-    <b-form @submit="onSubmit">
-      <b-container>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="teamIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Team ID:"
-            >
-              <b-form-input id="teamId" type="text" v-model="team.FantasyTeamID" disabled></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="teamNameGroup"
-              horizontal
-              label-cols="4"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Name:"
-            >
-              <b-form-input id="teamName" type="text" v-model="team.Name"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="teamUserIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="User ID:"
-            >
-              <b-form-input id="userID" type="text" v-model="team.UserID"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="teamLeagueIDGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Fantasy League ID:"
-            >
-              <b-form-input id="leagueID" type="text" v-model="team.FantasyLeagueID"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueCreatedDateGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Created Date:"
-            >
-              <b-form-input id="createdDate" type="text" v-model="team.CreatedDate" disabled></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="teamScheduleTeamNumber"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Schedule Team Number:"
-            >
-              <b-form-input
-                id="scheduleTeamNumber"
-                type="text"
-                v-model.number="team.ScheduleTeamNumber"
-              ></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6" align-h="start">
-            <b-form-group
-              id="teamStatusGroup"
-              horizontal
-              label-cols="4"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Status:"
-            >
-              <b-form-radio-group
-                id="teamStatus"
-                name="teamStatus"
-                v-model="team.Status"
-                :options="statusOptions"
-              ></b-form-radio-group>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-button type="submit" variant="primary">Submit</b-button>
-      </b-container>
-    </b-form>
+    <b-container>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>Team ID:</label>
+        </b-col>
+        <b-col>
+          <span>{{team.FantasyTeamID}}</span>
+        </b-col>
+        <b-col cols="2">
+          <label>Name:</label>
+        </b-col>
+        <b-col>
+          <span>{{team.Name}}</span>
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>User ID:</label>
+        </b-col>
+        <b-col>
+          <span>{{team.UserID}}</span>
+        </b-col>
+        <b-col cols="2">
+          <label>Fantasy League ID:</label>
+        </b-col>
+        <b-col>
+          <span>{{team.FantasyLeagueID}}</span>
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>Created Date:</label>
+        </b-col>
+        <b-col>
+          <span>{{team.CreatedDate}}</span>
+        </b-col>
+        <b-col cols="2">
+          <label>Schedule Team Number:</label>
+        </b-col>
+        <b-col>
+          <span>{{team.ScheduleTeamNumber}}</span>
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col cols="2" align-h="start">
+          <label>Status:</label>
+        </b-col>
+        <b-col>
+          <span>{{team.Status}}</span>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 

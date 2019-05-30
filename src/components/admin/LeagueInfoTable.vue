@@ -26,160 +26,91 @@
           <h3>LEAGUE INFO</h3>
         </b-col>
       </b-form-row>
+      <b-row>
+        <b-col>
+          <b-button
+            pill
+            variant="success"
+            @click="$router.push({name: 'adminleagueedit', params: { leagueId: leagueId}})"
+          >edit</b-button>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>&#160;</b-col>
+      </b-row>
     </b-container>
-    <b-form @submit="onSubmit">
-      <b-container>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="League ID:"
-            >
-              <b-form-input id="leagueId" type="text" v-model="league.FantasyLeagueID" disabled></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="leagueNameGroup"
-              horizontal
-              label-cols="4"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Name:"
-            >
-              <b-form-input id="leagueName" type="text" v-model="league.Name"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueSeasonIdGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Season ID:"
-            >
-              <b-form-input id="seasonID" type="text" v-model="league.SeasonID"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="leagueFantasyGameIDGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Fantasy Game ID:"
-            >
-              <b-form-input id="gameID" type="text" v-model="league.FantasyGameID"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueDescriptionGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Description:"
-            >
-              <b-form-input id="description" type="text" v-model="league.Description"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="leaguePasswordGroup"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Password:"
-            >
-              <b-form-input id="leaguePassword" type="text" v-model="league.Password"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueCreatedDate"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Created On:"
-            >
-              <b-form-input id="createdDate" type="text" v-model="league.CreatedDate" disabled></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6">
-            <b-form-group
-              id="leagueVisibility"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Visibility:"
-            >
-              <b-form-radio-group
-                id="leagueVisibility"
-                name="leagueVisibility"
-                v-model="league.Visibility"
-                :options="visibilityOptions"
-              ></b-form-radio-group>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row align-h="center">
-          <b-col cols="6">
-            <b-form-group
-              id="leagueCreatedBy"
-              horizontal
-              label-cols="4"
-              label-for="inputHorizontal"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Created By:"
-            >
-              <b-form-input id="createdBy" type="text" v-model="league.CreatedByUserID" disabled></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col cols="6" align-h="start">
-            <b-form-group
-              id="leagueStatusGroup"
-              horizontal
-              label-cols="4"
-              label-class="font-weight-bold pt-0"
-              label-text-align="right"
-              label="Status:"
-            >
-              <b-form-radio-group
-                id="leagueStatus"
-                name="leagueStatus"
-                v-model="league.Status"
-                :options="statusOptions"
-              ></b-form-radio-group>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-button type="submit" variant="primary">Submit</b-button>
-      </b-container>
-    </b-form>
+    <b-container>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>League ID:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.FantasyLeagueID}}</span>
+        </b-col>
+        <b-col cols="2">
+          <label>Name:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.Name}}</span>
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>Season ID:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.SeasonID}}</span>
+        </b-col>
+        <b-col cols="2">
+          <label>Fantasy Game ID:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.FantasyGameID}}</span>
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>Description:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.Description}}</span>
+        </b-col>
+        <b-col cols="2">
+          <label>Password:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.Password}}</span>
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>Created On:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.CreatedDate}}</span>
+        </b-col>
+        <b-col cols="2">
+          <label>Visibility:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.Visibility}}</span>
+        </b-col>
+      </b-row>
+      <b-row align-h="center">
+        <b-col cols="2">
+          <label>Created By:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.CreatedByUserID}}</span>
+        </b-col>
+        <b-col cols="2" align-h="start">
+          <label>Status:</label>
+        </b-col>
+        <b-col>
+          <span>{{league.Status}}</span>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 

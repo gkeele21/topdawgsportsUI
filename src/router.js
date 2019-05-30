@@ -14,8 +14,10 @@ import AdminSeasonInfo from "./views/admin/SeasonInfo.vue";
 import AdminSeasonEdit from "./views/admin/SeasonEdit.vue";
 import AdminSeasonCreate from "./views/admin/SeasonCreate.vue";
 import AdminLeagueInfo from "./views/admin/LeagueInfo.vue";
+import AdminLeagueEdit from "./views/admin/LeagueEdit.vue";
 import AdminLeagueCreate from "./views/admin/LeagueCreate.vue";
 import AdminTeamInfo from "./views/admin/TeamInfo.vue";
+import AdminTeamEdit from "./views/admin/TeamEdit.vue";
 import AdminTeamCreate from "./views/admin/TeamCreate.vue";
 import SalaryCapStandings from "./views/salarycap/Standings.vue";
 
@@ -110,6 +112,15 @@ let router = new Router({
       }
     },
     {
+      name: "adminleagueedit",
+      path: "/admin/league/:leagueid/edit",
+      component: AdminLeagueEdit,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       name: "adminleaguecreate",
       path: "/admin/league/create",
       component: AdminLeagueCreate,
@@ -122,6 +133,15 @@ let router = new Router({
       name: "adminteaminfo",
       path: "/admin/team/:teamid",
       component: AdminTeamInfo,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      name: "adminteamedit",
+      path: "/admin/team/:teamid/edit",
+      component: AdminTeamEdit,
       props: true,
       meta: {
         requiresAuth: true
