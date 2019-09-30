@@ -6,9 +6,13 @@ import About from "./views/About.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Dashboard from "./views/Dashboard.vue";
+import CreateOrJoinLeague from "./views/CreateOrJoinLeague.vue";
+import CreateLeague from "./views/CreateLeague.vue";
+import CreateTeam from "./views/CreateTeam.vue";
 
 import AdminDashboard from "./views/admin/AdminDashboard.vue";
 import AdminUsers from "./views/admin/Users.vue";
+import AdminUserInfo from "./views/admin/UserInfo.vue";
 import AdminSeasons from "./views/admin/Seasons.vue";
 import AdminSeasonInfo from "./views/admin/SeasonInfo.vue";
 import AdminSeasonEdit from "./views/admin/SeasonEdit.vue";
@@ -53,6 +57,24 @@ let router = new Router({
       component: Register
     },
     {
+      path: "/createorjoinleague/:seasonid/:fantasygameid",
+      name: "createorjoinleague",
+      props: true,
+      component: CreateOrJoinLeague
+    },
+    {
+      path: "/createleague/:seasonid/:fantasygameid",
+      name: "createleague",
+      props: true,
+      component: CreateLeague
+    },
+    {
+      path: "/createteam/:fantasyleagueid",
+      name: "createteam",
+      props: true,
+      component: CreateTeam
+    },
+    {
       path: "/admin",
       name: "admindashboard",
       component: AdminDashboard,
@@ -72,6 +94,15 @@ let router = new Router({
       path: "/admin/users",
       name: "adminusers",
       component: AdminUsers,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      name: "adminuserinfo",
+      path: "/admin/users/:userid",
+      component: AdminUserInfo,
+      props: true,
       meta: {
         requiresAuth: true
       }

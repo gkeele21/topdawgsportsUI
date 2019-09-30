@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Users</h2>
-    <b-table striped hover :items="items" :fields="fields" caption-top>
+    <b-table striped hover :items="items" :fields="fields" caption-top @row-clicked="myRowClickHandler">
       <template slot="table-caption">Users List</template>
       <template slot="Name" slot-scope="data">
         <a href="http://www.nfl.com">{{data.value}}</a>
@@ -62,6 +62,14 @@ export default {
       .catch(err => {
         alert("error getting results" + err);
       });
+  },
+  methods: {
+    myRowClickHandler(record) {
+      this.$router.push({
+        name: "adminuserinfo",
+        params: { userid: record["UserID"] }
+      });
+    }
   }
 };
 </script>

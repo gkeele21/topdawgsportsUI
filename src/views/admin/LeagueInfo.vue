@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <AdminSidebar/>
-    <AdminHeader/>
+    <AdminSidebar />
+    <AdminHeader />
     <b-container>
       <b-row>
         <b-col>
@@ -10,16 +10,16 @@
       </b-row>
       <b-row>
         <b-col>
-          <LeagueInfoTable v-bind:leagueid="leagueId"/>
+          <LeagueInfoTable v-bind:leagueid="leagueId" />
         </b-col>
       </b-row>
       <b-row>
         <b-col>
-          <hr>
+          <hr />
         </b-col>
       </b-row>
       <b-row>
-        <LeagueTeamsTable v-bind:leagueid="leagueId"/>
+        <LeagueTeamsTable v-bind:leagueid="leagueId" />
       </b-row>
     </b-container>
   </div>

@@ -11,7 +11,8 @@ export default new Vuex.Store({
     currentUser: {},
     adminSeasonId: "",
     adminLeagueId: "",
-    adminTeamId: ""
+    adminTeamId: "",
+    adminUserId: ""
   },
   mutations: {
     auth_request(state) {
@@ -40,6 +41,9 @@ export default new Vuex.Store({
     },
     setAdminTeamId(state, data) {
       state.adminTeamId = data.adminTeamId;
+    },
+    setAdminUserId(state, data) {
+      state.adminUserId = data.adminUserId;
     }
   },
   actions: {
@@ -117,6 +121,13 @@ export default new Vuex.Store({
       console.log("setting adminTeamId to " + adminTeamId);
       return new Promise((resolve, reject) => {
         commit("setAdminTeamId", adminTeamId);
+        resolve();
+      });
+    },
+    setAdminUserId({ commit }, adminUserId) {
+      console.log("setting adminUserId to " + adminUserId);
+      return new Promise((resolve, reject) => {
+        commit("setAdminUserId", adminUserId);
         resolve();
       });
     }
