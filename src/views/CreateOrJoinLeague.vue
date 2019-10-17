@@ -28,7 +28,11 @@
             >Create New League</b-button>
           </b-col>
           <b-col cols="6">
-            <b-button type="submit" variant="primary">Join League</b-button>
+            <b-button
+              type="submit"
+              variant="primary"
+              @click="$router.push({name: 'joinleague', params: { seasonid: seasonId, fantasygameid: fantasyGameId },})"
+            >Join League</b-button>
           </b-col>
         </b-row>
       </b-container>

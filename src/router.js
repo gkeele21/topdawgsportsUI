@@ -7,6 +7,7 @@ import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Dashboard from "./views/Dashboard.vue";
 import CreateOrJoinLeague from "./views/CreateOrJoinLeague.vue";
+import JoinLeague from "./views/JoinLeague.vue";
 import CreateLeague from "./views/CreateLeague.vue";
 import CreateTeam from "./views/CreateTeam.vue";
 
@@ -61,6 +62,12 @@ let router = new Router({
       name: "createorjoinleague",
       props: true,
       component: CreateOrJoinLeague
+    },
+    {
+      path: "/joinleague/:seasonid/:fantasygameid",
+      name: "joinleague",
+      props: true,
+      component: JoinLeague
     },
     {
       path: "/createleague/:seasonid/:fantasygameid",
